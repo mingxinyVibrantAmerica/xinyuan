@@ -1,0 +1,20 @@
+<main class="flex flex-col items-center justify-center">
+  <div style="font-size: 64px; line-height: 74px;">AutoContrast
+  </div>
+  <div class="flex w-2/3 my-4 justify-around">
+    <div class="flex w-1/2 justify-center" (click)="choose('search')">
+      <button style="width: 90%; height: 44px;" mat-raised-button color="primary">Search</button>
+    </div>
+    <div class="flex w-1/2 justify-center" (click)="choose('edit')">
+      <button style="width: 90%; height: 44px;" mat-raised-button color="primary">Edit</button>
+    </div>
+  </div>
+  <div *ngIf="choice == 'edit'" class="w-2/3">
+    <app-edit></app-edit>
+  </div>
+  <div *ngIf="choice == 'search'" class="w-2/3">
+    <app-search></app-search>
+  </div>
+</main>
+
+<router-outlet />

@@ -1,0 +1,49 @@
+<div class="flex flex-col " style="width: 100%">
+  <form class="example-form flex flex-col">
+    <mat-form-field>
+      <mat-label>Protocol</mat-label>
+      <mat-select>
+        @for (food of foods; track food) {
+        <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Concentration</mat-label>
+      <input matInput placeholder="" value="concentration">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Height</mat-label>
+      <input matInput placeholder="" value="height">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Weight</mat-label>
+      <input matInput placeholder="" value="weight">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Age</mat-label>
+      <input matInput placeholder="" value="age">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Gender</mat-label>
+      <input matInput placeholder="" value="gender">
+    </mat-form-field>
+    <mat-form-field class="example-full-width  ">
+      <mat-label>Gender</mat-label>
+      <input matInput placeholder="" value="gender">
+    </mat-form-field>
+
+    <div class="flex justify-end">
+      <button style="width: 50%; height: 44px;" mat-raised-button color="primary">Submit</button>
+    </div>
+    <div class="flex flex-col ml-4" style="font-size: 22px; line-height: 26px;">
+      <div class="mb-1">
+        Total Volume:
+      </div>
+      <div class="mb-1">
+        Flow Rate
+      </div>
+    </div>
+
+  </form>
+</div>
