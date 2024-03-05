@@ -9,6 +9,10 @@
       </mat-select>
     </mat-form-field>
   </form>
+  <div class="flex justify-around" style="margin-bottom: 22px;">
+    <button style="width: 49%; height: 44px;" mat-raised-button color="primary">Drop File</button>
+    <button style="width: 49%; height: 44px;" mat-raised-button color="primary">Add rule</button>
+  </div>
   <form class="mat-elevation-z8 flex-col mb-4">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="index">
@@ -70,7 +74,4 @@
                    aria-label="Select page of periodic elements">
     </mat-paginator>
   </form>
-  <div class="flex">
-    <button style="width: 50%; height: 44px;" mat-raised-button color="primary">Drop File</button>
-  </div>
 </div>
