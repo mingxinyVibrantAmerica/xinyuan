@@ -6,11 +6,13 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import {EditComponent} from "./edit/edit.component";
 import { CommonModule } from '@angular/common'; // Import CommonModule
+import {MatTabsModule} from '@angular/material/tabs';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SearchComponent, EditComponent, MatIconModule,MatDividerModule,MatButtonModule, CommonModule],
+  imports: [RouterOutlet, SearchComponent, EditComponent, MatIconModule,MatDividerModule,MatButtonModule, CommonModule, MatTabsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

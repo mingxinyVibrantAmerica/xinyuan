@@ -6,11 +6,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
-
-interface Food {
-  value: string;
-  viewValue: string;
-}
+import {Food} from "../models/food.interface"
 
 @Component({
   selector: 'app-search',
