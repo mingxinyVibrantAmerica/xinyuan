@@ -1,0 +1,36 @@
+<div class="flex flex-col container" style="width: 100%">
+    <form class="example-form flex flex-wrap">
+        <mat-form-field class="w-1/2 px-1">
+            <mat-label>Protocol</mat-label>
+            <mat-select>
+                @for (food of foods; track food) {
+                <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-1/2 px-1 ">
+            <mat-label>Concentration</mat-label>
+            <input matInput placeholder="" value="concentration">
+        </mat-form-field>
+        <mat-form-field class="w-1/2 px-1 ">
+            <mat-label>Height</mat-label>
+            <input matInput placeholder="" value="height">
+        </mat-form-field>
+        <mat-form-field class="w-1/2 px-1 ">
+            <mat-label>Weight</mat-label>
+            <input matInput placeholder="" value="weight">
+        </mat-form-field>
+        <mat-form-field class="w-1/2 px-1 ">
+            <mat-label>Age</mat-label>
+            <input matInput placeholder="" value="age">
+        </mat-form-field>
+        <mat-form-field class="w-1/2 px-1 ">
+            <mat-label>Gender</mat-label>
+            <input matInput placeholder="" value="gender">
+        </mat-form-field>
+    </form>
+    <div class="flex justify-around w-full" style="margin-bottom: 22px;" >
+        <button style="width: 49%; height: 56px;" mat-raised-button color="primary">Save</button>
+        <button style="width: 49%; height: 56px;" mat-raised-button color="warn">Cancel</button>
+    </div>
+</div>

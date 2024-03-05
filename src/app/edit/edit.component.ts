@@ -10,6 +10,8 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { Food } from '../models/food.interface';
 import {PeriodicElement} from "../models/periodicElement.interface"
+import {RuleDetailComponent} from "../rule-detail/rule-detail.component";
+
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {index: 1, height: 10, weight: 10, age: 10, gender: 'male', concentration: '10%', totalVolume: 1, flowRate: 1},
@@ -27,7 +29,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatDividerModule, MatButtonModule, MatTableModule, MatPaginatorModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatDividerModule, MatButtonModule, MatTableModule, MatPaginatorModule, RuleDetailComponent],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css'
 })
