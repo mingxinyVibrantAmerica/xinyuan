@@ -8,8 +8,8 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import { Food } from '../models/food.interface';
-import {PeriodicElement} from "../models/periodicElement.interface"
+import { Food } from '../../models/food.interface';
+import {PeriodicElement} from "../../models/periodicElement.interface"
 import {RuleDetailComponent} from "../rule-detail/rule-detail.component";
 
 
