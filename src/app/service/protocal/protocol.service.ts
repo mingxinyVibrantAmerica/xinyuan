@@ -13,14 +13,15 @@ export class ProtocolService {
 
   constructor() { }
 
-  protocolList: Protocol[];
-
   // your service goes here
   getProtocolsFromBackend(): void {
     this.allProtocols = MOCK_PROTOCOL_RESPONSE;
     this.protocolType =  this.getUniqueProtocols(MOCK_PROTOCOL_RESPONSE);
-    console.log(this.protocolType);
     console.log('Success Load mock Data');
+  }
+
+  deleteProtocolById(id: number): void {
+    this.allProtocols = this.allProtocols.filter(e => e.index != id);
   }
 
   getUniqueProtocols(data: Protocol[]): string[] {
