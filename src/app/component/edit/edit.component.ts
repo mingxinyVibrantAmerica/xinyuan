@@ -31,7 +31,6 @@ export class EditComponent implements OnInit{
 
   ngOnInit(): void {
     this.protocolType = this.protocolService.getProtocolType();
-    this.protocolType.push('Reset Filter')
     this.displayProtocolList = this.protocolService.getAllProtocols();
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
   }
@@ -39,7 +38,7 @@ export class EditComponent implements OnInit{
   // filter table by choice of protocol
   chooseProtocol(choice: string) {
     this.protocolChoice = choice;
-    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol === choice || this.protocolChoice == "Reset Filter");
+    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol === choice || this.protocolChoice == "");
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
   }
 
@@ -50,7 +49,7 @@ export class EditComponent implements OnInit{
 
   // reset display protocol list and table data source
   recalculateTable() {
-    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol === this.protocolChoice || this.protocolChoice == "Reset Filter" );
+    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol === this.protocolChoice || this.protocolChoice == "" );
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
   }
 

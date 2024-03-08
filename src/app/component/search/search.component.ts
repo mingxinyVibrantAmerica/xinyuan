@@ -6,8 +6,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
-import {Food} from "../../models/food.interface"
-import { CommonModule } from '@angular/common'; // Import CommonModule
+import { CommonModule } from '@angular/common';
+import {ProtocolService} from "../../service/protocal/protocol.service"; // Import CommonModule
 
 @Component({
   selector: 'app-search',
@@ -19,12 +19,15 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 export class SearchComponent {
   isSearch: boolean = false;
   isEdit: boolean = false;
+  protocolType: string[];
+  protocolChoice: string = "";
 
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'},
-  ];
+  constructor(private protocolService: ProtocolService) {}
+
+  ngOnInit(): void {
+    this.protocolType = this.protocolService.getProtocolType();
+  }
+
 
   toggleSearch(){
     this.isSearch = !this.isSearch;
