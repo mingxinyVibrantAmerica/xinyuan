@@ -4,65 +4,69 @@
       <mat-label>Protocol</mat-label>
       <mat-select>
         @for (choice of protocolType; track choice) {
-        <mat-option [value]="choice">{{choice}}</mat-option>
+        <mat-option (click)="protocolChoice = choice" [value]="choice">{{choice}}</mat-option>
         }
       </mat-select>
     </mat-form-field>
     <mat-form-field class="w-1/2 px-1 ">
       <mat-label>Concentration</mat-label>
-      <input matInput placeholder="" value="concentration">
+      <input matInput placeholder="" value="" name="concentration" [(ngModel)]="concentration">
     </mat-form-field>
     <mat-form-field class="w-1/2 px-1 ">
       <mat-label>Height</mat-label>
-      <input matInput placeholder="" value="height">
+      <input matInput placeholder="" value="height" name="height" [(ngModel)]="height">
     </mat-form-field>
     <mat-form-field class="w-1/2 px-1 ">
       <mat-label>Weight</mat-label>
-      <input matInput placeholder="" value="weight">
+      <input matInput placeholder="" value="weight" name="weight" [(ngModel)]="weight">
     </mat-form-field>
     <mat-form-field class="w-1/2 px-1 ">
       <mat-label>Age</mat-label>
-      <input matInput placeholder="" value="age">
+      <input matInput placeholder="" value="age" name="age" [(ngModel)]="age">
     </mat-form-field>
-    <mat-form-field class="w-1/2 px-1 ">
+    <mat-form-field class="w-1/2 px-1">
       <mat-label>Gender</mat-label>
-      <input matInput placeholder="" value="gender">
+      <mat-select>
+        @for (choice of genderChoices; track choice) {
+        <mat-option (click)="gender = choice" [value]="choice">{{choice}}</mat-option>
+        }
+      </mat-select>
     </mat-form-field>
 
 
     <div class="flex justify-around w-full px-1 ">
-      <button style="width: 49%; height: 56px;" mat-raised-button color="primary" (click)="toggleSearch()">Search</button>
+      <button style="width: 49%; height: 56px;" mat-raised-button color="primary" (click)="search()">Search</button>
     </div>
 
-    <div *ngIf="isSearch" class="example-form flex flex-wrap w-full">
+    <div *ngIf="isSearchDirtyFlag" class="example-form flex flex-wrap w-full">
     <div class="flex w-full" style="margin-bottom: 22px;"></div>
     <div class="flex w-full">
       <div class="flex items-center w-1/2 px-1" style="margin-bottom: 22px;">
         <div class="font-bold ml-2 flex items-center" style="font-size: 22px; height: 56px;">
-          Total Volume: 10
+          Total Volume: {{searchProtocol?searchProtocol.totalVolume : "N/A"}}
         </div>
       </div>
       <mat-form-field *ngIf="isEdit" class="w-1/2 px-1">
         <mat-label>Total Volume replace to:</mat-label>
-        <input matInput placeholder="" value="10">
+        <input matInput placeholder="" value="10" name="totalVolume" [(ngModel)]="totalVolume">
       </mat-form-field>
     </div>
     <div class="flex w-full">
       <div class="flex items-center w-1/2 px-1" style="margin-bottom: 22px;">
         <div class="font-bold ml-2 flex items-center" style="font-size: 22px; height: 56px;">
-          Flow Rate: 20
+          Flow Rate: {{searchProtocol?searchProtocol.flowRate : "N/A"}}
         </div>
       </div>
       <mat-form-field *ngIf="isEdit" class="w-1/2 px-1 ">
         <mat-label>Flow Rate replace to:</mat-label>
-        <input matInput placeholder="" value="20">
+        <input matInput placeholder="" value="20" name="flowRate" [(ngModel)]="flowRate">
       </mat-form-field>
     </div>
     <div *ngIf="!isEdit" class="flex justify-around w-full px-1" style="margin-bottom: 22px;">
-      <button style="width: 49%; height: 56px;" mat-raised-button color="primary" (click)="toggleEdit()">Edit Result</button>
+      <button style="width: 49%; height: 56px;" mat-raised-button color="primary" (click)="toggleEdit()">Add/Edit Result</button>
     </div>
     <div *ngIf="isEdit" class="flex justify-around w-full" style="margin-bottom: 22px;" >
-      <button style="width: 49%; height: 56px;" mat-raised-button color="primary" (click)="toggleEdit()">Save</button>
+      <button style="width: 49%; height: 56px;" mat-raised-button color="primary" (click)="save()">Save</button>
       <button style="width: 49%; height: 56px;" mat-raised-button color="warn" (click)="toggleEdit()">Cancel</button>
     </div>
     </div>

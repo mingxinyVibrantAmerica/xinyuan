@@ -7,7 +7,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatButtonModule} from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import {ProtocolService} from "../../service/protocal/protocol.service"; // Import CommonModule
+import {ProtocolService} from "../../service/protocal/protocol.service";
+import {Protocol} from "../../models/protocol.interface"; // Import CommonModule
+
 
 @Component({
   selector: 'app-search',
@@ -17,10 +19,22 @@ import {ProtocolService} from "../../service/protocal/protocol.service"; // Impo
   styleUrl: './search.component.css'
 })
 export class SearchComponent {
-  isSearch: boolean = false;
+  isSearchDirtyFlag: boolean = false;
   isEdit: boolean = false;
+
+  // input
   protocolType: string[];
   protocolChoice: string = "";
+  concentration: number;
+  height: number;
+  weight: number;
+  age: number;
+  genderChoices: string[] = ["Male", "Female"];
+  gender: string;
+  totalVolume: number;
+  flowRate: number;
+  // search output
+  searchProtocol: Protocol|null;
 
   constructor(private protocolService: ProtocolService) {}
 
@@ -28,13 +42,37 @@ export class SearchComponent {
     this.protocolType = this.protocolService.getProtocolType();
   }
 
-
-  toggleSearch(){
-    this.isSearch = !this.isSearch;
+  search(): void {
+    this.isSearchDirtyFlag = true;
+    this.isEdit = false;
+    this.searchProtocol = this.protocolService.searchProtocol(this.protocolChoice, this.concentration, this.height, this.weight, this.age, this.gender)
+    console.log(this.searchProtocol)
   }
 
   toggleEdit(){
     this.isEdit = !this.isEdit;
+  }
+
+  save() {
+    if (this.searchProtocol) {
+      console.log(this.searchProtocol)
+      let replaceSearchProtocol = this.searchProtocol
+      replaceSearchProtocol.totalVolume = this.totalVolume;
+      replaceSearchProtocol.flowRate = this.flowRate;
+      this.protocolService.updateProtocol(replaceSearchProtocol)
+    } else {
+      this.protocolService.addProtocol(
+          this.protocolChoice,
+          this.concentration,
+          this.height,
+          this.weight,
+          this.age,
+          this.gender,
+          this.totalVolume,
+          this.flowRate,
+      )
+    }
+    this.isEdit = false;
   }
 
 }
