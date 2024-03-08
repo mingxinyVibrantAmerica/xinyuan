@@ -1,11 +1,11 @@
-<div class="modal">
+<div *ngIf="shown" class="modal">
     <div class="modal-content">
     <form class="example-form flex flex-wrap">
         <mat-form-field class="w-1/2 px-1">
             <mat-label>Protocol</mat-label>
             <mat-select>
-                @for (food of foods; track food) {
-                <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+                @for (choice of protocolType; track choice) {
+                <mat-option [value]="choice">{{choice}}</mat-option>
                 }
             </mat-select>
         </mat-form-field>
@@ -32,7 +32,7 @@
     </form>
     <div class="flex justify-around w-full" style="margin-bottom: 22px;" >
         <button style="width: 49%; height: 56px;" mat-raised-button color="primary">Save</button>
-        <button style="width: 49%; height: 56px;" mat-raised-button color="warn">Cancel</button>
+        <button style="width: 49%; height: 56px;" mat-raised-button color="warn" (click)="cancel()">Cancel</button>
     </div>
     </div>
 </div>

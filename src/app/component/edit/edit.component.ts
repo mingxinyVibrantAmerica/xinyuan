@@ -11,11 +11,12 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {RuleDetailComponent} from "../rule-detail/rule-detail.component";
 import {ProtocolService} from "../../service/protocal/protocol.service";
 import {Protocol} from "../../models/protocol.interface";
+import { CommonModule } from '@angular/common'; // Import CommonModule
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatDividerModule, MatButtonModule, MatTableModule, MatPaginatorModule, RuleDetailComponent],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatDividerModule, MatButtonModule, MatTableModule, MatPaginatorModule, RuleDetailComponent, CommonModule],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.css'
 })
@@ -26,6 +27,7 @@ export class EditComponent implements OnInit{
   displayProtocolList: Protocol[];
   displayedColumns: string[] = ['index', 'height', 'weight', 'age', 'gender', 'concentration', 'totalVolume', 'flowRate', 'action',];
   dataSource = new MatTableDataSource<Protocol>([]);
+  showDialog = false;
 
   constructor(private protocolService: ProtocolService) {}
 
@@ -61,6 +63,8 @@ export class EditComponent implements OnInit{
     this.dataSource.paginator = this.paginator;
   }
 
-
+  addProtocol() {
+    this.showDialog = true;
+  }
 
 }

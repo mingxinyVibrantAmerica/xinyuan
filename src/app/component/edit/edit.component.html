@@ -11,7 +11,7 @@
   </form>
   <div class="flex justify-around" style="margin-bottom: 22px;">
     <button style="width: 49%; height: 44px;" mat-raised-button color="primary">Drop File</button>
-    <button style="width: 49%; height: 44px;" mat-raised-button color="primary">Add rule</button>
+    <button style="width: 49%; height: 44px;" mat-raised-button color="primary" (click)="addProtocol()">Add rule</button>
   </div>
   <form class="mat-elevation-z8 flex-col mx-4 mb-4">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -73,5 +73,5 @@
                    aria-label="Select page of periodic elements">
     </mat-paginator>
   </form>
-  <app-rule-detail></app-rule-detail>
+  <app-rule-detail [(shown)]="showDialog"></app-rule-detail>
 </div>
