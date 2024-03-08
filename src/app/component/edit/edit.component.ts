@@ -22,7 +22,7 @@ import {Protocol} from "../../models/protocol.interface";
 
 export class EditComponent implements OnInit{
   protocolType: string[];
-  protocolChoice: string = "Reset Filter";
+  protocolChoice: string = "";
   displayProtocolList: Protocol[];
   displayedColumns: string[] = ['index', 'height', 'weight', 'age', 'gender', 'concentration', 'totalVolume', 'flowRate', 'action',];
   dataSource = new MatTableDataSource<Protocol>([]);
