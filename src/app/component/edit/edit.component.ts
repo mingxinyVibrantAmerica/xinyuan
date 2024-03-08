@@ -35,6 +35,13 @@ export class EditComponent implements OnInit{
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
   }
 
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
   // filter table by choice of protocol
   chooseProtocol(choice: string) {
     this.protocolChoice = choice;
@@ -51,13 +58,6 @@ export class EditComponent implements OnInit{
   recalculateTable() {
     this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol === this.protocolChoice || this.protocolChoice == "" );
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
-  }
-
-
-
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
