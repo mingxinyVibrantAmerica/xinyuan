@@ -3,8 +3,8 @@
     <mat-form-field>
       <mat-label>Protocol</mat-label>
       <mat-select>
-        @for (food of foods; track food) {
-        <mat-option [value]="food.value">{{food.viewValue}}</mat-option>
+        @for (choice of protocolType; track choice) {
+        <mat-option (click)="protocolChoice = choice" [value]="choice">{{choice}}</mat-option>
         }
       </mat-select>
     </mat-form-field>

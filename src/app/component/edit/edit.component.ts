@@ -11,6 +11,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import { Food } from '../../models/food.interface';
 import {PeriodicElement} from "../../models/periodicElement.interface"
 import {RuleDetailComponent} from "../rule-detail/rule-detail.component";
+import {ProtocolService} from "../../service/protocal/protocol.service";
 
 
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -34,6 +35,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrl: './edit.component.css'
 })
 export class EditComponent implements OnInit{
+  protocolType: string[];
+  protocolChoice: string;
+
+  constructor(private protocolService: ProtocolService) {}
+
+  ngOnInit(): void {
+    this.protocolType = this.protocolService.getProtocolType();
+  }
+
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
     {value: 'pizza-1', viewValue: 'Pizza'},
@@ -48,6 +58,4 @@ export class EditComponent implements OnInit{
     this.dataSource.paginator = this.paginator;
   }
 
-  ngOnInit(): void {
-  }
 }
