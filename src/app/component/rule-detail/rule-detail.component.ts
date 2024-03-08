@@ -19,6 +19,8 @@ import {ProtocolService} from "../../service/protocal/protocol.service";
 })
 export class RuleDetailComponent {
   protocolType: string[];
+  gender: string;
+  genderChoices: string[] = ["Male", "Female"];
   @Input() shown: boolean;
   @Output() shownChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() Protocol: Protocol;

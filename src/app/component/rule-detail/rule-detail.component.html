@@ -25,9 +25,21 @@
             <mat-label>Age</mat-label>
             <input matInput placeholder="" value="age">
         </mat-form-field>
-        <mat-form-field class="w-1/2 px-1 ">
+        <mat-form-field class="w-1/2 px-1">
             <mat-label>Gender</mat-label>
-            <input matInput placeholder="" value="gender">
+            <mat-select>
+                @for (choice of genderChoices; track choice) {
+                <mat-option (click)="gender = choice" [value]="choice">{{choice}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="w-1/2 px-1">
+            <mat-label>Total Volume replace to:</mat-label>
+            <input matInput placeholder="" value="10" name="totalVolume">
+        </mat-form-field>
+        <mat-form-field class="w-1/2 px-1 ">
+            <mat-label>Flow Rate replace to:</mat-label>
+            <input matInput placeholder="" value="20" name="flowRate">
         </mat-form-field>
     </form>
     <div class="flex justify-around w-full" style="margin-bottom: 22px;" >
