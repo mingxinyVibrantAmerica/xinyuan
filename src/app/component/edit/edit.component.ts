@@ -22,7 +22,7 @@ import {Protocol} from "../../models/protocol.interface";
 
 export class EditComponent implements OnInit{
   protocolType: string[];
-  protocolChoice: string = "";
+  protocolChoice: string = "Reset Filter";
   displayProtocolList: Protocol[];
   displayedColumns: string[] = ['index', 'height', 'weight', 'age', 'gender', 'concentration', 'totalVolume', 'flowRate', 'action',];
   dataSource = new MatTableDataSource<Protocol>([]);
@@ -31,6 +31,7 @@ export class EditComponent implements OnInit{
 
   ngOnInit(): void {
     this.protocolType = this.protocolService.getProtocolType();
+    this.protocolType.push('Reset Filter')
     this.displayProtocolList = this.protocolService.getAllProtocols();
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
   }
@@ -38,7 +39,7 @@ export class EditComponent implements OnInit{
   // filter table by choice of protocol
   chooseProtocol(choice: string) {
     this.protocolChoice = choice;
-    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol.includes(choice));
+    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol === choice || this.protocolChoice == "Reset Filter");
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
   }
 
@@ -49,7 +50,7 @@ export class EditComponent implements OnInit{
 
   // reset display protocol list and table data source
   recalculateTable() {
-    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol.includes(this.protocolChoice));
+    this.displayProtocolList = this.protocolService.allProtocols.filter(e=> e.protocol === this.protocolChoice || this.protocolChoice == "Reset Filter" );
     this.dataSource = new MatTableDataSource<Protocol>(this.displayProtocolList);
   }
 
